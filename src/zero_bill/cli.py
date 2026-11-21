@@ -1,4 +1,5 @@
 import asyncio
+import importlib.resources
 import shutil
 import time
 from pathlib import Path
@@ -39,17 +40,15 @@ def init(
         )
         raise typer.Exit(code=1)
 
-    example_locations = [
-        Path("config.example.yaml"),
-        Path(__file__).resolve().parent.parent.parent / "config.example.yaml",
-    ]
-    source_path = next((p for p in example_locations if p.is_file()), None)
-
-    if not source_path:
-        console.print("[red]Error: config.example.yaml template not found![/red]")
+    template_resource = importlib.resources.files("zero_bill").joinpath(
+        "config.example.yaml"
+    )
+    if not template_resource.is_file():
+        console.print("[red]Error: Package template config.example.yaml not found![/red]")
         raise typer.Exit(code=1)
 
-    shutil.copyfile(source_path, target_path)
+    content = template_resource.read_text(encoding="utf-8")
+    target_path.write_text(content, encoding="utf-8")
     console.print(
         f"[green]Successfully created configuration file: [bold]{target_path}[/bold][/green]"
     )

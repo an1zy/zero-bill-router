@@ -6,7 +6,21 @@ build-backend = "setuptools.build_meta"
 name = "zero-bill-router"
 version = "0.1.0"
 description = "Open-source CLI and local OpenAI-compatible proxy router"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "an1zy" }]
 requires-python = ">=3.11"
+keywords = ["llm", "proxy", "ollama", "openai", "ai-agents", "failover", "cli"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
 dependencies = [
     "fastapi",
     "uvicorn",
@@ -22,8 +36,16 @@ dev = [
     "pytest",
 ]
 
+[project.urls]
+Homepage = "https://github.com/an1zy/zero-bill-router"
+Repository = "https://github.com/an1zy/zero-bill-router"
+Issues = "https://github.com/an1zy/zero-bill-router/issues"
+
 [project.scripts]
 zero-bill = "zero_bill.cli:app"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+zero_bill = ["*.yaml"]

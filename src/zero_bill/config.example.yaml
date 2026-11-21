@@ -1,0 +1,43 @@
+server:
+  host: "127.0.0.1"
+  port: 8787
+
+ollama:
+  base_url: "http://127.0.0.1:11434/v1"
+  model: "qwen2.5-coder:7b"
+  enabled: true
+
+routing:
+  local_max_chars: 1200
+  local_keywords:
+    - "commit message"
+    - "summarize"
+    - "rename"
+    - "format"
+    - "typo"
+    - "docstring"
+
+providers:
+  - name: "groq"
+    base_url: "https://api.groq.com/openai/v1"
+    api_key_env: "GROQ_API_KEY"
+    model: "llama-3.3-70b-versatile"
+    priority: 1
+    cooldown_seconds: 60
+    cost_per_1m_tokens: 0.0
+
+  - name: "openrouter"
+    base_url: "https://openrouter.ai/api/v1"
+    api_key_env: "OPENROUTER_API_KEY"
+    model: "meta-llama/llama-3.3-70b-instruct:free"
+    priority: 2
+    cooldown_seconds: 60
+    cost_per_1m_tokens: 0.0
+
+  - name: "gemini"
+    base_url: "https://generativelanguage.googleapis.com/v1beta/openai"
+    api_key_env: "GEMINI_API_KEY"
+    model: "gemini-2.0-flash"
+    priority: 3
+    cooldown_seconds: 60
+    cost_per_1m_tokens: 0.0
