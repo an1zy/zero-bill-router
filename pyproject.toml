@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zero-bill-router"
+version = "0.1.0"
+description = "Open-source CLI and local OpenAI-compatible proxy router"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "httpx",
+    "pydantic>=2.0",
+    "pyyaml",
+    "typer",
+    "rich",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+]
+
+[project.scripts]
+zero-bill = "zero_bill.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]

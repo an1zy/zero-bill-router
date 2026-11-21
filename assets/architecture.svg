@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 320" width="860" height="320">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#30363d" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#3fb950" />
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#58a6ff" />
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#f85149" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="860" height="320" fill="#0d1117" />
+
+  <!-- 1. Client Box -->
+  <rect x="24" y="110" width="160" height="92" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1" />
+  <text x="36" y="138" font-family="ui-monospace, monospace" font-size="13" font-weight="600" fill="#e6edf3">Coding Agent</text>
+  <text x="36" y="158" font-family="ui-monospace, monospace" font-size="11" fill="#8b949e">Cursor / Claude / Cline</text>
+  <text x="36" y="180" font-family="ui-monospace, monospace" font-size="10" fill="#58a6ff">OPENAI_BASE_URL</text>
+
+  <!-- Arrow: Client -> Router -->
+  <line x1="184" y1="156" x2="228" y2="156" stroke="#30363d" stroke-width="1.5" marker-end="url(#arrow)" />
+
+  <!-- 2. Router Box -->
+  <rect x="234" y="96" width="186" height="120" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1" />
+  <text x="248" y="126" font-family="ui-monospace, monospace" font-size="13" font-weight="600" fill="#e6edf3">zero-bill-router</text>
+  <text x="248" y="146" font-family="ui-monospace, monospace" font-size="11" fill="#8b949e">127.0.0.1:8787</text>
+  <line x1="248" y1="158" x2="406" y2="158" stroke="#30363d" stroke-width="1" />
+  <text x="248" y="180" font-family="ui-monospace, monospace" font-size="11" font-weight="600" fill="#e6edf3">Decision Engine</text>
+  <text x="248" y="198" font-family="ui-monospace, monospace" font-size="10" fill="#8b949e">chars &lt;= 1200 | keywords</text>
+
+  <!-- Branch lines -->
+  <path d="M 420 130 C 445 130, 445 68, 470 68" fill="none" stroke="#3fb950" stroke-width="1.5" marker-end="url(#arrow-green)" />
+  <path d="M 420 178 C 445 178, 445 178, 470 178" fill="none" stroke="#58a6ff" stroke-width="1.5" marker-end="url(#arrow-blue)" />
+
+  <!-- 3A. Upper Target: Ollama ($0) -->
+  <rect x="476" y="24" width="180" height="88" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="1" />
+  <text x="490" y="48" font-family="ui-monospace, monospace" font-size="10" font-weight="600" fill="#3fb950">ROUTINE TASK ($0)</text>
+  <text x="490" y="72" font-family="ui-monospace, monospace" font-size="13" font-weight="600" fill="#e6edf3">Local Ollama</text>
+  <text x="490" y="94" font-family="ui-monospace, monospace" font-size="11" fill="#8b949e">qwen2.5-coder:7b</text>
+
+  <!-- 3B. Lower Target: Free API #1 -->
+  <rect x="476" y="134" width="180" height="74" rx="6" fill="#161b22" stroke="#58a6ff" stroke-width="1" />
+  <text x="490" y="156" font-family="ui-monospace, monospace" font-size="10" font-weight="600" fill="#58a6ff">COMPLEX TASK</text>
+  <text x="490" y="178" font-family="ui-monospace, monospace" font-size="12" font-weight="600" fill="#e6edf3">Free API #1 (Groq)</text>
+  <text x="490" y="196" font-family="ui-monospace, monospace" font-size="10" fill="#8b949e">Priority 1 • 70B Versatile</text>
+
+  <!-- Failover Arrow -->
+  <line x1="566" y1="208" x2="566" y2="236" stroke="#f85149" stroke-width="1.5" marker-end="url(#arrow-red)" />
+  <rect x="580" y="214" width="84" height="18" rx="3" fill="#161b22" stroke="#f85149" stroke-width="1" />
+  <text x="586" y="227" font-family="ui-monospace, monospace" font-size="9" fill="#f85149">429 Cooldown</text>
+
+  <!-- 3C. Failover Target: Free API #2 -->
+  <rect x="476" y="242" width="180" height="66" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1" />
+  <text x="490" y="262" font-family="ui-monospace, monospace" font-size="9" fill="#8b949e">FAILOVER TARGET</text>
+  <text x="490" y="282" font-family="ui-monospace, monospace" font-size="12" font-weight="600" fill="#e6edf3">Free API #2 (OpenRouter)</text>
+  <text x="490" y="298" font-family="ui-monospace, monospace" font-size="10" fill="#8b949e">Priority 2 • Free Tier</text>
+
+  <!-- Telemetry lines to Tracker -->
+  <path d="M 656 68 C 680 68, 680 142, 704 142" fill="none" stroke="#30363d" stroke-width="1.5" marker-end="url(#arrow)" />
+  <path d="M 656 171 C 680 171, 680 160, 704 160" fill="none" stroke="#30363d" stroke-width="1.5" marker-end="url(#arrow)" />
+
+  <!-- 4. UsageTracker Box -->
+  <rect x="710" y="104" width="130" height="104" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1" />
+  <text x="722" y="132" font-family="ui-monospace, monospace" font-size="12" font-weight="600" fill="#e6edf3">UsageTracker</text>
+  <text x="722" y="152" font-family="ui-monospace, monospace" font-size="10" fill="#8b949e">~/.zero-bill/</text>
+  <text x="722" y="168" font-family="ui-monospace, monospace" font-size="10" fill="#58a6ff">usage.jsonl</text>
+  <text x="722" y="192" font-family="ui-monospace, monospace" font-size="9" fill="#3fb950">Tokens &amp; Savings</text>
+</svg>
